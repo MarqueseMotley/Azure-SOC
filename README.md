@@ -1,10 +1,11 @@
 # Azure-SOC
 # Building a SOC + Honeynet in Azure (Live Traffic)
-![Cloud Honeynet / SOC](https://i.imgur.com/ZWxe03e.jpg)
+![Cloud Honeynet / SOC](https://github.com/MarqueseMotley/Azure-SOC/assets/165986939/0912f316-cc32-4a4b-b64e-ecf8092bc34a)
+
 
 ## Introduction
 
-In this project, I build a mini honeynet in Azure and ingest log sources from various resources into a Log Analytics workspace, which is then used by Microsoft Sentinel to build attack maps, trigger alerts, and create incidents. I measured some security metrics in the insecure environment for 24 hours, apply some security controls to harden the environment, measure metrics for another 24 hours, then show the results below. The metrics we will show are:
+For this endeavor, I constructed a compact honeynet within Azure and funneled log data from diverse sources into a Log Analytics workspace. Microsoft Sentinel leverages this data to craft attack visualizations, prompt alerts, and generate incident reports. Over a 24-hour period, I assessed security metrics within the vulnerable setup, implemented security measures to fortify the environment, conducted another 24-hour assessment, and now present the ensuing results. The showcased metrics include:
 
 - SecurityEvent (Windows Event Logs)
 - Syslog (Linux Event Logs)
@@ -13,10 +14,12 @@ In this project, I build a mini honeynet in Azure and ingest log sources from va
 - AzureNetworkAnalytics_CL (Malicious Flows allowed into our honeynet)
 
 ## Architecture Before Hardening / Security Controls
-![Architecture Diagram](https://i.imgur.com/aBDwnKb.jpg)
+![Architecture Diagram](https://github.com/MarqueseMotley/Azure-SOC/assets/165986939/0ff6bb14-d518-4f61-8528-888b76e1ac98)
+
 
 ## Architecture After Hardening / Security Controls
-![Architecture Diagram](https://i.imgur.com/YQNa9Pp.jpg)
+![Architecture Diagram](https://github.com/MarqueseMotley/Azure-SOC/assets/165986939/4bd8ea79-1764-470d-97af-1a4bf66d60df)
+
 
 The architecture of the mini honeynet in Azure consists of the following components:
 
@@ -33,23 +36,26 @@ For the "BEFORE" metrics, all resources were originally deployed, exposed to the
 For the "AFTER" metrics, Network Security Groups were hardened by blocking ALL traffic with the exception of my admin workstation, and all other resources were protected by their built-in firewalls as well as Private Endpoint
 
 ## Attack Maps Before Hardening / Security Controls
-![NSG Allowed Inbound Malicious Flows](https://i.imgur.com/1qvswSX.png)<br>
-![Linux Syslog Auth Failures](https://i.imgur.com/G1YgZt6.png)<br>
-![Windows RDP/SMB Auth Failures](https://i.imgur.com/ESr9Dlv.png)<br>
+![NSG Allowed Inbound Malicious Flows](https://github.com/MarqueseMotley/Azure-SOC/assets/165986939/62b906c8-6007-4ef4-8fc4-e5aa6f6382ea)
+<br>
+![Linux Syslog Auth Failures](https://github.com/MarqueseMotley/Azure-SOC/assets/165986939/1d052f44-14c6-4722-861d-8b86dd42ec7c)
+<br>
+![Windows RDP/SMB Auth Failures](https://github.com/MarqueseMotley/Azure-SOC/assets/165986939/8c645fc9-d47b-421f-85f3-16d9f853722a)
+<br>
 
 ## Metrics Before Hardening / Security Controls
 
 The following table shows the metrics we measured in our insecure environment for 24 hours:
-Start Time 2023-03-15 17:04:29
-Stop Time 2023-03-16 17:04:29
+Start Time 2024-04-01T18:37:19.0741684Z
+Stop Time 2024-04-02T18:37:19.0741684Z
 
 | Metric                   | Count
 | ------------------------ | -----
-| SecurityEvent            | 19470
-| Syslog                   | 3028
-| SecurityAlert            | 10
-| SecurityIncident         | 348
-| AzureNetworkAnalytics_CL | 843
+| SecurityEvent            | 23929
+| Syslog                   | 4718
+| SecurityAlert            | 2
+| SecurityIncident         | 168
+| AzureNetworkAnalytics_CL | 3556
 
 ## Attack Maps Before Hardening / Security Controls
 
@@ -58,13 +64,13 @@ Stop Time 2023-03-16 17:04:29
 ## Metrics After Hardening / Security Controls
 
 The following table shows the metrics we measured in our environment for another 24 hours, but after we have applied security controls:
-Start Time 2023-03-18 15:37
-Stop Time	2023-03-19 15:37
+Start Time 2024-04-03T00:26:16.6517441Z
+Stop Time	2024-04-04T00:26:16.6517441Z
 
 | Metric                   | Count
 | ------------------------ | -----
-| SecurityEvent            | 8778
-| Syslog                   | 25
+| SecurityEvent            | 11170
+| Syslog                   | 27
 | SecurityAlert            | 0
 | SecurityIncident         | 0
 | AzureNetworkAnalytics_CL | 0
